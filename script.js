@@ -1,4 +1,4 @@
-let sccore = 0;
+let score = 0;
 let aWidth;
 let aHeight;
 let timer;
@@ -21,8 +21,8 @@ function setGameAreaBounds() {
 }
 
 function detectHit() {
-    sccore += 1;
-    window.document.getElementById('scoreLabel').innerHTML = `Score = ${sccore}`;
+    score += 1;
+    window.document.getElementById('scoreLabel').innerHTML = `Score = ${score}`;
 
 }
 
@@ -41,14 +41,18 @@ function moveDot() {
         document.getElementById('scoreLabel').innerHTML += "     Game Over!";
         document.getElementById('dot').removeEventListener('click', detectHit);
         clearTimeout(timer);
-        restart();
+        let BtnStartOver = window.document.getElementById('startOver');
+        BtnStartOver.classList.remove("hidden");
+        BtnStartOver.addEventListener("click", restart);
     }
     iterations ++;
-} // Comentado para adição da função responsável por recomeçar o jogo
+}
 
 function restart() {
-        let removeClass = window.document.getElementById('startOver');
-        removeClass.classList.remove("hidden"); //Colocar um delay, para o botão aparecer 1000 ms depois da mensagem "game over"
         iterations = 0;
-        window.document.getElementById("startOver").addEventListener("click",setGameAreaBounds);
+        score = 0;
+        window.document.getElementById('scoreLabel').innerHTML = `Score = ${score}`;
+        let BtnStartOver = window.document.getElementById('startOver');
+        BtnStartOver.classList.add("hidden");
+        setGameAreaBounds();
 }
