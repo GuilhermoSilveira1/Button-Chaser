@@ -25,7 +25,7 @@ function detectHit() {
 
 }
 
-function moveDot() {
+//function moveDot() {
     let x = Math.floor(Math.random()*aWidth);
     let y = Math.floor(Math.random()*aHeight);
     if (x<10)
@@ -42,4 +42,4 @@ function moveDot() {
         clearTimeout(timer);
     }
     iterations ++;
-}
+//} Comentado para adição da função responsável por recomeçar o jogo
